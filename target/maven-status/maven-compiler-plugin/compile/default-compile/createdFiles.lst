@@ -1,0 +1,6 @@
+com\atguigu\cloud\mapper\ItemInfoMapper.class
+com\atguigu\cloud\service\impl\ItemInfoServiceImpl.class
+com\atguigu\cloud\controller\ItemController.class
+com\atguigu\cloud\service\ItemInfoService.class
+com\atguigu\cloud\domain\ItemInfo.class
+com\atguigu\cloud\ItemApplication.class

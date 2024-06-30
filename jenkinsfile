@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('拉取代码') {
+            steps {
+                echo '拉取代码'
+            }
+        }
+
+         stage('任务构建') {
+            steps {
+                echo '使用maven进行构建'
+            }
+        }
+
+        stage('代码质量分析') {
+            steps {
+                echo '代码质量分析'
+            }
+        }
+
+        stage('单元测试') {
+            steps {
+                echo '单元测试'
+            }
+        }
+
+        stage('制作镜像') {
+            steps {
+                echo '制作镜像'
+            }
+        }
+
+         stage('创建容器') {
+            steps {
+                echo '创建容器'
+            }
+        }
+    }
+}

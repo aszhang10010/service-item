@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//unpkg.com/element-plus"></script>
+</head>
+<body>
+
+
+    <div id="app">
+        <center><h1>商品列表</h1></center>
+        <el-table :data="tableData" style="width: 100%">
+            <el-table-column prop="id" label="序号" width="180"></el-table-column>
+            <el-table-column prop="name" label="名称" width="300"></el-table-column>
+            <el-table-column prop="count" label="库存"></el-table-column>
+            <el-table-column prop="price" label="价格"></el-table-column>
+            <el-table-column label="图片" >
+                <template #default="scope">
+                    <el-image
+                        :src="scope.row.url"
+                        :fit="none"
+                    />
+                </template>
+            </el-table-column>
+        </el-table>
+    </div>
+
+</body>
+<script>
+    const { createApp, ref , onMounted  } = Vue
+
+    const app = createApp({
+
+        setup() {
+
+            const tableData = ref([])
+            onMounted(()=>{
+                axios.get("http://192.168.136.191:32484/item/findAll").then(resp=>{
+                    tableData.value = resp.data ;
+                    console.log(tableData.value)
+                })
+            })
+
+            return {
+                tableData
+            }
+
+        }
+    })
+
+    app.use(ElementPlus).mount('#app')
+</script>
+</html>
